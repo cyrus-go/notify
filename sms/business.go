@@ -1,6 +1,10 @@
 package sms
 
-import "net/url"
+import (
+	"github.com/cyrus-go/notify/pkg/tools"
+	"github.com/pkg/errors"
+	"net/url"
+)
 
 const (
 	TplIdForCephalonRegister = "5706256" // Cephalon 注册模板编号
@@ -15,11 +19,15 @@ type VerifySms struct {
 	Code   string
 }
 
-func NewVerifySms(mobile, code string) *VerifySms {
+func NewVerifySms(mobile, code string) (*VerifySms, error) {
+	// 手机号验证
+	if !tools.VerifyMobile(mobile) {
+		return nil, errors.New("invalid phone num")
+	}
 	return &VerifySms{
 		Mobile: mobile,
 		Code:   code,
-	}
+	}, nil
 }
 
 // SendSmsRegisterCephalon Cephalon 注册短信验证
