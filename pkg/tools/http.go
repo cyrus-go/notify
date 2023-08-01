@@ -115,17 +115,17 @@ func PostUrlEncode(postUrl string, msg, headers map[string]string) ([]byte, erro
 	return ioutil.ReadAll(resp.Body)
 }
 
-func PostForm(url string, data url.Values) error {
+func PostForm(url string, data url.Values) ([]byte, error) {
 	resp, err := http.PostForm(url, data)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	fmt.Println(string(body))
-	return nil
+	return body, nil
 }
