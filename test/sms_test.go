@@ -8,7 +8,7 @@ import (
 func TestSmsRegisterCephalon(t *testing.T) {
 	mobile := "13187098660"
 	code := "666666"
-	smsCli, err := sms.NewVerifySms(mobile, code)
+	smsCli, err := sms.NewVerifySms("your_apikey", mobile, code)
 	if err != nil {
 		t.Logf("init verify sms failed, err: %v", err)
 		return
@@ -22,7 +22,7 @@ func TestSmsRegisterCephalon(t *testing.T) {
 func TestSmsLoginCephalon(t *testing.T) {
 	mobile := "13187098660"
 	code := "777777"
-	smsCli, err := sms.NewVerifySms(mobile, code)
+	smsCli, err := sms.NewVerifySms("your_apikey", mobile, code)
 	if err != nil {
 		t.Logf("init verify sms failed, err: %v", err)
 		return
@@ -36,7 +36,7 @@ func TestSmsLoginCephalon(t *testing.T) {
 func TestSmsModifyPwdCephalon(t *testing.T) {
 	mobile := "13187098660"
 	code := "888888"
-	smsCli, err := sms.NewVerifySms(mobile, code)
+	smsCli, err := sms.NewVerifySms("your_apikey", mobile, code)
 	if err != nil {
 		t.Logf("init verify sms failed, err: %v", err)
 		return
@@ -50,7 +50,7 @@ func TestSmsModifyPwdCephalon(t *testing.T) {
 func TestSmsRegisterYuanHui(t *testing.T) {
 	mobile := "13187098660"
 	code := "999999"
-	smsCli, err := sms.NewVerifySms(mobile, code)
+	smsCli, err := sms.NewVerifySms("your_apikey", mobile, code)
 	if err != nil {
 		t.Logf("init verify sms failed, err: %v", err)
 		return

@@ -15,16 +15,18 @@ const (
 )
 
 type VerifySms struct {
+	APIKey string
 	Mobile string
 	Code   string
 }
 
-func NewVerifySms(mobile, code string) (*VerifySms, error) {
+func NewVerifySms(apikey, mobile, code string) (*VerifySms, error) {
 	// 手机号验证
 	if !tools.VerifyMobile(mobile) {
 		return nil, errors.New("invalid phone num")
 	}
 	return &VerifySms{
+		APIKey: apikey,
 		Mobile: mobile,
 		Code:   code,
 	}, nil
@@ -33,23 +35,23 @@ func NewVerifySms(mobile, code string) (*VerifySms, error) {
 // SendSmsRegisterCephalon Cephalon 注册短信验证
 func (v *VerifySms) SendSmsRegisterCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.Mobile, TplIdForCephalonRegister, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonRegister, tplValue)
 }
 
 // SendSmsLoginCephalon Cephalon 登录短信验证
 func (v *VerifySms) SendSmsLoginCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.Mobile, TplIdForCephalonLogin, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonLogin, tplValue)
 }
 
 // SendSmsModifyPwdCephalon Cephalon 修改密码短信验证
 func (v *VerifySms) SendSmsModifyPwdCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.Mobile, TplIdForCephalonModify, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonModify, tplValue)
 }
 
 // SendSmsRegisterYuanHui 元绘 登录短信验证
 func (v *VerifySms) SendSmsRegisterYuanHui() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.Mobile, TplIdForYuanHuiRegister, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForYuanHuiRegister, tplValue)
 }
