@@ -45,6 +45,8 @@ type TplId struct {
 }
 
 func init() {
+	return
+	// todo: 配置文件路劲加载方式待处理
 	absPath, err := filepath.Abs(".")
 	if err != nil {
 		panic(fmt.Errorf("get abs path failed, err: %v", err))
