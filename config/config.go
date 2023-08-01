@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"github.com/cyrus-go/notify/pkg/tools"
 	"github.com/fsnotify/fsnotify"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -46,7 +45,10 @@ type TplId struct {
 }
 
 func init() {
-	absPath := tools.ProjectPath()
+	absPath, err := filepath.Abs(".")
+	if err != nil {
+		panic(fmt.Errorf("get abs path failed, err: %v", err))
+	}
 	cPath := filepath.Join(absPath, "config/config.yaml")
 	log.Printf("==========> config path: %v", cPath)
 	viper.SetConfigFile(cPath)
@@ -59,8 +61,7 @@ func init() {
 		}
 	})
 
-	err := viper.ReadInConfig()
-	if err != nil {
+	if err = viper.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("ReadInConfig failed, err: %v", err))
 	}
 	if err = viper.Unmarshal(&Conf); err != nil {
