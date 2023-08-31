@@ -7,13 +7,14 @@ import (
 )
 
 const (
-	TplIdForCephalonCoreRegister = "5706256" // Cephalon Core 注册模板编号
-	TplIdForCephalonCoreLogin    = "5706258" // Cephalon Core 登录模板编号
-	TplIdForCephalonCoreModify   = "5706266" // Cephalon Core 修改密码模板编号
-	TplIdForYuanHuiRegister      = "5706320" // 元绘注册模板编号
-	TplIdForCephalonRegister     = "5720260" // Cephalon 注册模板编号
-	TplIdForCephalonLogin        = "5720262" // Cephalon 登录模板编号
-	TplIdForCephalonModify       = "5720264" // Cephalon 修改密码模板编号
+	TplIdForCephalonCoreRegister  = "5706256" // Cephalon Core 注册模板编号
+	TplIdForCephalonCoreLogin     = "5706258" // Cephalon Core 登录模板编号
+	TplIdForCephalonCoreModify    = "5706266" // Cephalon Core 修改密码模板编号
+	TplIdForYuanHuiRegister       = "5706320" // 元绘注册模板编号
+	TplIdForCephalonCloudModify   = "5720264" // Cephalon Cloud 修改密码模板编号
+	TplIdForCephalonCloudLogin    = "5720262" // Cephalon Cloud 登录模板编号
+	TplIdForCephalonCloudRegister = "5720260" // Cephalon Cloud 注册模板编号
+	TplIdForCephalonBindWechat    = "5749864" // Cephalon Cloud 绑定微信模板编号
 	//apikey                   = "14b1bbedae4ba4403778f551948e8026"
 )
 
@@ -62,17 +63,23 @@ func (v *VerifySms) SendSmsRegisterYuanHui() (err error) {
 // SendSmsRegisterCephalon Cephalon 注册短信验证
 func (v *VerifySms) SendSmsRegisterCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonRegister, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonCloudRegister, tplValue)
 }
 
 // SendSmsLoginCephalon Cephalon 登录短信验证
 func (v *VerifySms) SendSmsLoginCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonLogin, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonCloudLogin, tplValue)
 }
 
 // SendSmsModifyPwdCephalon Cephalon 修改密码短信验证
 func (v *VerifySms) SendSmsModifyPwdCephalon() (err error) {
 	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonModify, tplValue)
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonCloudModify, tplValue)
+}
+
+// SendSmsBindWechatCephalon Cephalon 绑定微信短信验证
+func (v *VerifySms) SendSmsBindWechatCephalon() (err error) {
+	tplValue := url.Values{"#code#": {v.Code}}
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonBindWechat, tplValue)
 }
