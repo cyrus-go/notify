@@ -28,6 +28,11 @@ type VerifySms struct {
 	Code   string
 }
 
+type NotifySms struct {
+	APIKey string
+	Mobile string
+}
+
 func NewVerifySms(apikey, mobile, code string) (*VerifySms, error) {
 	// 手机号验证
 	if !tools.VerifyMobile(mobile) {
@@ -37,6 +42,17 @@ func NewVerifySms(apikey, mobile, code string) (*VerifySms, error) {
 		APIKey: apikey,
 		Mobile: mobile,
 		Code:   code,
+	}, nil
+}
+
+func NewNotifySms(apikey, mobile string) (*NotifySms, error) {
+	// 手机号验证
+	if !tools.VerifyMobile(mobile) {
+		return nil, errors.New("invalid phone num")
+	}
+	return &NotifySms{
+		APIKey: apikey,
+		Mobile: mobile,
 	}, nil
 }
 
@@ -101,13 +117,11 @@ func (v *VerifySms) SendSmsBindWechatCephalon() (err error) {
 }
 
 // SendSmsCephalonRenewalBalanceNotEnough Cephalon 自动续费余额不足短信
-func (v *VerifySms) SendSmsCephalonRenewalBalanceNotEnough() (err error) {
-	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonRenewalBalanceNotEnough, tplValue)
+func (v *NotifySms) SendSmsCephalonRenewalBalanceNotEnough() (err error) {
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonRenewalBalanceNotEnough, nil)
 }
 
 // SendSmsCephalonMissionExpired Cephalon 任务到期提醒短信
-func (v *VerifySms) SendSmsCephalonMissionExpired() (err error) {
-	tplValue := url.Values{"#code#": {v.Code}}
-	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionExpired, tplValue)
+func (v *NotifySms) SendSmsCephalonMissionExpired() (err error) {
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionExpired, nil)
 }
