@@ -17,8 +17,8 @@ const (
 	TplIdForCephalonCloudLogin              = "5720262" // Cephalon Cloud 登录模板编号
 	TplIdForCephalonCloudRegister           = "5720260" // Cephalon Cloud 注册模板编号
 	TplIdForCephalonBindWechat              = "5749864" // Cephalon Cloud 绑定微信模板编号
-	TplIdForCephalonRenewalBalanceNotEnough = "5755198" // Cephalon Cloud 自动续费余额不足通知模板编号
-	TplIdForCephalonMissionExpired          = "5755198" // Cephalon Cloud 任务到期提醒模板编号
+	TplIdForCephalonRenewalBalanceNotEnough = "5783976" // Cephalon Cloud 自动续费余额不足通知模板编号
+	TplIdForCephalonMissionExpired          = "5783972" // Cephalon Cloud 任务到期提醒模板编号
 	//apikey                   = "14b1bbedae4ba4403778f551948e8026"
 )
 
