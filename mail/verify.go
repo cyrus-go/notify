@@ -15,14 +15,14 @@ const (
 	titleCephalonCoreLogin     = "端脑小程序登录验证"
 	titleCephalonCoreModifyPwd = "端脑小程序修改密码验证"
 
-	contextCephalonCloudRegister   = "【端脑科技】欢迎注册 Cephalon Cloud，本次注册的验证码为 %d，5分钟内有效"
-	contextCephalonCloudLogin      = "【端脑科技】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %d，5分钟内有效"
-	contextCephalonCloudModifyPwd  = "【端脑科技】您正在修改 Cephalon Cloud 密码，本次验证码为 %d，5分钟内有效"
-	contextCephalonCloudBindWechat = "【端脑科技】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %d，5分钟内有效"
+	contextCephalonCloudRegister   = "【端脑科技】欢迎注册 Cephalon Cloud，本次注册的验证码为 %s，5分钟内有效"
+	contextCephalonCloudLogin      = "【端脑科技】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %s，5分钟内有效"
+	contextCephalonCloudModifyPwd  = "【端脑科技】您正在修改 Cephalon Cloud 密码，本次验证码为 %s，5分钟内有效"
+	contextCephalonCloudBindWechat = "【端脑科技】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %s，5分钟内有效"
 
-	contextCephalonCoreRegister  = "【端脑科技】欢迎注册 Cephalon Core，本次注册的验证码为 %d，5分钟内有效"
-	contextCephalonCoreLogin     = "【端脑科技】欢迎登陆 Cephalon Core，本次登陆的验证码为 %d，5分钟内有效"
-	contextCephalonCoreModifyPwd = "【端脑科技】您正在修改 Cephalon Core 平台密码，本次验证码为 %d，5分钟内有效"
+	contextCephalonCoreRegister  = "【端脑科技】欢迎注册 Cephalon Core，本次注册的验证码为 %s，5分钟内有效"
+	contextCephalonCoreLogin     = "【端脑科技】欢迎登陆 Cephalon Core，本次登陆的验证码为 %s，5分钟内有效"
+	contextCephalonCoreModifyPwd = "【端脑科技】您正在修改 Cephalon Core 平台密码，本次验证码为 %s，5分钟内有效"
 )
 
 type VerifyMail struct {
@@ -30,10 +30,10 @@ type VerifyMail struct {
 	Password    string
 	SendMail    string
 	ReceiveMail string
-	Code        int
+	Code        string
 }
 
-func NewVerifyMail(username, password, sendMail, receiveMail string, code int) *VerifyMail {
+func NewVerifyMail(username, password, sendMail, receiveMail, code string) *VerifyMail {
 	return &VerifyMail{
 		Username:    username,
 		Password:    password,
