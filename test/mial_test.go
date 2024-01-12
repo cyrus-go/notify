@@ -10,7 +10,7 @@ func TestMailRegisterCephalonCloud(t *testing.T) {
 	password := "your_pwd"
 	sendMail := "your@mail.com"
 	receiveMail := "receive@mail.com"
-	code := 223344
+	code := "223344"
 	verifyMail := mail.NewVerifyMail(username, password, sendMail, receiveMail, code)
 	if err := verifyMail.SendMailCephalonCloudRegister(); err != nil {
 		t.Fatalf("send register cephalon mail failed, err: %v", err)
@@ -22,7 +22,7 @@ func TestMailRegisterCephalonCore(t *testing.T) {
 	password := "your_pwd"
 	sendMail := "your@mail.com"
 	receiveMail := "receive@mail.com"
-	code := 223344
+	code := "223344"
 	verifyMail := mail.NewVerifyMail(username, password, sendMail, receiveMail, code)
 	if err := verifyMail.SendMailCephalonCoreRegister(); err != nil {
 		t.Fatalf("send register cephalon core mail failed, err: %v", err)
