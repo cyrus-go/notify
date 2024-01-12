@@ -36,11 +36,11 @@ func (v *VerifySmsTencent) SendTencentSmsCephalonBindWechat() ([]byte, error) {
 }
 
 // SendTencentSmsCephalonRenewalBalanceNotEnough Cephalon 自动续费余额不足短信 - 腾讯云短信
-func (v *VerifySmsTencent) SendTencentSmsCephalonRenewalBalanceNotEnough() ([]byte, error) {
-	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonRenewalBalanceNotEnough, v.Phones, []string{v.Code})
+func (v *NotifySmsTencent) SendTencentSmsCephalonRenewalBalanceNotEnough() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonRenewalBalanceNotEnough, v.Phones, []string{})
 }
 
 // SendTencentSmsCephalonMissionExpired Cephalon 任务到期提醒短信 - 腾讯云短信
-func (v *VerifySmsTencent) SendTencentSmsCephalonMissionExpired() ([]byte, error) {
-	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionExpired, v.Phones, []string{v.Code})
+func (v *NotifySmsTencent) SendTencentSmsCephalonMissionExpired() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionExpired, v.Phones, []string{})
 }
