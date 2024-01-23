@@ -23,13 +23,14 @@ const (
 )
 
 const (
-	TplIdTencentForCephalonCoreRegister            = "2047320" // Cephalon Core 注册模板编号
-	TplIdTencentForCephalonCoreLogin               = "2047321" // Cephalon Core 登录模板编号
-	TplIdTencentForCephalonCoreModify              = "2047323" // Cephalon Core 修改密码模板编号
-	TplIdTencentForCephalonCloudModify             = "2047324" // Cephalon Cloud 修改密码模板编号
-	TplIdTencentForCephalonCloudLogin              = "2047326" // Cephalon Cloud 登录模板编号
-	TplIdTencentForCephalonCloudRegister           = "2047327" // Cephalon Cloud 注册模板编号
-	TplIdTencentForCephalonBindWechat              = "2047328" // Cephalon Cloud 绑定微信模板编号
-	TplIdTencentForCephalonRenewalBalanceNotEnough = "2047330" // Cephalon Cloud 自动续费余额不足通知模板编号
-	TplIdTencentForCephalonMissionExpired          = "2047331" // Cephalon Cloud 任务到期提醒模板编号
+	TplIdTencentForCephalonCoreRegister              = "2047320" // Cephalon Core 注册模板编号
+	TplIdTencentForCephalonCoreLogin                 = "2047321" // Cephalon Core 登录模板编号
+	TplIdTencentForCephalonCoreModify                = "2047323" // Cephalon Core 修改密码模板编号
+	TplIdTencentForCephalonCloudModify               = "2047324" // Cephalon Cloud 修改密码模板编号
+	TplIdTencentForCephalonCloudLogin                = "2047326" // Cephalon Cloud 登录模板编号
+	TplIdTencentForCephalonCloudRegister             = "2047327" // Cephalon Cloud 注册模板编号
+	TplIdTencentForCephalonBindWechat                = "2047328" // Cephalon Cloud 绑定微信模板编号
+	TplIdTencentForCephalonRenewalBalanceNotEnough   = "2047330" // Cephalon Cloud 自动续费余额不足通知模板编号
+	TplIdTencentForCephalonMissionExpired            = "2047331" // Cephalon Cloud 任务到期提醒模板编号
+	TplIdTencentForCephalonMissionRunningTimeWarning = "2058052" // Cephalon Cloud 任务运行时长提醒模板编号
 )
