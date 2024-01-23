@@ -46,6 +46,6 @@ func (v *NotifySmsTencent) SendTencentSmsCephalonMissionExpired() ([]byte, error
 }
 
 // SendTencentSmsCephalonMissionRunningTimeWarning Cephalon 任务运行时长提醒 - 腾讯云短信
-func (v *NotifySmsTencent) SendTencentSmsCephalonMissionRunningTimeWarning() ([]byte, error) {
-	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, []string{})
+func (v *NotifySmsWithParamTencent) SendTencentSmsCephalonMissionRunningTimeWarning() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, v.Params)
 }
