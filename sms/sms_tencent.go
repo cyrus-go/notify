@@ -45,7 +45,17 @@ func (v *NotifySmsTencent) SendTencentSmsCephalonMissionExpired() ([]byte, error
 	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionExpired, v.Phones, []string{})
 }
 
-// SendTencentSmsCephalonMissionRunningTimeWarning Cephalon 任务运行时长提醒 - 腾讯云短信
-func (v *NotifySmsWithParamTencent) SendTencentSmsCephalonMissionRunningTimeWarning() ([]byte, error) {
-	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, v.Params)
+// SendTencentSmsCephalonMissionRunningTimeWarningSixHour Cephalon 任务运行时长提醒 6 小时 - 腾讯云短信
+func (v *NotifySmsTencent) SendTencentSmsCephalonMissionRunningTimeWarningSixHour() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, []string{WarningTimeParamSixHour})
+}
+
+// SendTencentSmsCephalonMissionRunningTimeWarningTwelveHour Cephalon 任务运行时长提醒 12 小时 - 腾讯云短信
+func (v *NotifySmsTencent) SendTencentSmsCephalonMissionRunningTimeWarningTwelveHour() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, []string{WarningTimeParamTwelveHour})
+}
+
+// SendTencentSmsCephalonMissionRunningTimeWarningTwentyFourHour Cephalon 任务运行时长提醒 24 小时 - 腾讯云短信
+func (v *NotifySmsTencent) SendTencentSmsCephalonMissionRunningTimeWarningTwentyFourHour() ([]byte, error) {
+	return sendSmsTencent(v.SecretId, v.SecretKey, v.SdkAppId, TplIdTencentForCephalonMissionRunningTimeWarning, v.Phones, []string{WarningTimeParamTwentyFourHour})
 }

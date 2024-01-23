@@ -34,3 +34,9 @@ const (
 	TplIdTencentForCephalonMissionExpired            = "2047331" // Cephalon Cloud 任务到期提醒模板编号
 	TplIdTencentForCephalonMissionRunningTimeWarning = "2058052" // Cephalon Cloud 任务运行时长提醒模板编号
 )
+
+const (
+	WarningTimeParamSixHour        = "6"
+	WarningTimeParamTwelveHour     = "12"
+	WarningTimeParamTwentyFourHour = "24"
+)
