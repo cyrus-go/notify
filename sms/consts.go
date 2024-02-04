@@ -20,6 +20,7 @@ const (
 	TplIdYPForCephalonBindWechat              = "5749864" // Cephalon Cloud 绑定微信模板编号
 	TplIdYPForCephalonRenewalBalanceNotEnough = "5783976" // Cephalon Cloud 自动续费余额不足通知模板编号
 	TplIdYPForCephalonMissionExpired          = "5783972" // Cephalon Cloud 任务到期提醒模板编号
+	TplIdForCephalonMissionRunningTimeWarning = "5872698" // Cephalon Cloud 任务运行时长提醒模板编号
 )
 
 const (

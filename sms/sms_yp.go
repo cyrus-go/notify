@@ -73,3 +73,21 @@ func (v *NotifySms) SendSmsCephalonRenewalBalanceNotEnough() (err error) {
 func (v *NotifySms) SendSmsCephalonMissionExpired() (err error) {
 	return sendSms(v.APIKey, v.Mobile, TplIdYPForCephalonMissionExpired, nil)
 }
+
+// SendSmsCephalonMissionRunningTimeWarningSixHour Cephalon 任务运行时长提醒 6 小时
+func (v *NotifySms) SendSmsCephalonMissionRunningTimeWarningSixHour() (err error) {
+	tplValue := url.Values{"#time#": {WarningTimeParamSixHour}}
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionRunningTimeWarning, tplValue)
+}
+
+// SendSmsCephalonMissionRunningTimeWarningTwelveHour Cephalon 任务运行时长提醒 12 小时
+func (v *NotifySms) SendSmsCephalonMissionRunningTimeWarningTwelveHour() (err error) {
+	tplValue := url.Values{"#time#": {WarningTimeParamTwelveHour}}
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionRunningTimeWarning, tplValue)
+}
+
+// SendSmsCephalonMissionRunningTimeWarningTwentyFourHour Cephalon 任务运行时长提醒 24 小时
+func (v *NotifySms) SendSmsCephalonMissionRunningTimeWarningTwentyFourHour() (err error) {
+	tplValue := url.Values{"#time#": {WarningTimeParamTwentyFourHour}}
+	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionRunningTimeWarning, tplValue)
+}
