@@ -16,6 +16,13 @@ type NotifySms struct {
 	Mobile string
 }
 
+type NotifySmsDeviceDriveAbnormal struct {
+	APIKey     string
+	Mobile     string
+	DeviceName string
+	Time       string
+}
+
 type VerifySmsTencent struct {
 	SdkAppId  string
 	SecretId  string
@@ -51,6 +58,19 @@ func NewNotifySms(apikey, mobile string) (*NotifySms, error) {
 	return &NotifySms{
 		APIKey: apikey,
 		Mobile: mobile,
+	}, nil
+}
+
+func NewNotifySmsDeviceDriveAbnormal(apikey, mobile, deviceName, abnormalTime string) (*NotifySmsDeviceDriveAbnormal, error) {
+	// 手机号验证
+	if !tools.VerifyMobile(mobile) {
+		return nil, errors.New("invalid phone num")
+	}
+	return &NotifySmsDeviceDriveAbnormal{
+		APIKey:     apikey,
+		Mobile:     mobile,
+		DeviceName: deviceName,
+		Time:       abnormalTime,
 	}, nil
 }
 
