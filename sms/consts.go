@@ -22,6 +22,8 @@ const (
 	TplIdYPForCephalonMissionExpired          = "5783972" // Cephalon Cloud 任务到期提醒模板编号
 	TplIdForCephalonMissionRunningTimeWarning = "5872698" // Cephalon Cloud 任务运行时长提醒模板编号
 	TplIdForCephalonDeviceDriveAbnormal       = "5948780" // Cephalon Cloud 节点设备驱动异常提醒模板编号
+	TplIdForCephalonMissionWarning            = "6057946" // Cephalon Cloud 应用预警
+	TplIdForCephalonMissionGpuFree            = "6057950" // Cephalon Cloud 应用 Gpu 释放通知
 )
 
 const (

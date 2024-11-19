@@ -92,6 +92,10 @@ func (v *NotifySms) SendSmsCephalonMissionRunningTimeWarningTwentyFourHour() (er
 	return sendSms(v.APIKey, v.Mobile, TplIdForCephalonMissionRunningTimeWarning, tplValue)
 }
 
+func (v *NotifySms) SendSmsCustom(templateID string, tplValue url.Values) (err error) {
+	return sendSms(v.APIKey, v.Mobile, templateID, tplValue)
+}
+
 // SendSmsCephalonDeviceDriveAbnormal Cephalon 节点设备驱动异常提醒
 func (v *NotifySmsDeviceDriveAbnormal) SendSmsCephalonDeviceDriveAbnormal() (err error) {
 	tplValue := url.Values{"#name#": {v.DeviceName}, "#time#": {v.Time}}

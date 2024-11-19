@@ -35,3 +35,8 @@ func (n *NotifyMail) SendEmailWarningBalance() error {
 func (n *NotifyMail) SendEmailWarningAppExpired() error {
 	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyAppExpiredWarning, contextNotifyAppExpiredWarning)
 }
+
+// SendEmailCustom 发送自定义邮件
+func (n *NotifyMail) SendEmailCustom(sendName, title, content string) error {
+	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, sendName, title, content)
+}
