@@ -28,7 +28,7 @@ func sendSms(apikey, mobile, tplId string, tplContent url.Values) error {
 	// 发送模板内容编译
 	tplValue := tplContent.Encode()
 	// 群发模板 url
-	urlTplSms := "https://sms.yunpian.com/v2/sms/tpl_batch_send.json"
+	urlTplSms := "https://sms.yunpian.com/v2/sms/tpl_single_send.json"
 
 	dataTplSms := url.Values{"apikey": {apikey}, "mobile": {mobile}, "tpl_id": {tplId}, "tpl_value": {tplValue}}
 

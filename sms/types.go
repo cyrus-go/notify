@@ -38,6 +38,20 @@ type NotifySmsTencent struct {
 	Phones    []string
 }
 
+// VerifySmsYmrt 亿美软通
+type VerifySmsYmrt struct {
+	AppID     string
+	SecretKey string
+	Mobile    string
+	Code      string
+}
+
+type NotifySmsYmrt struct {
+	AppID     string
+	SecretKey string
+	Mobile    string
+}
+
 func NewVerifySms(apikey, mobile, code string) (*VerifySms, error) {
 	// 手机号验证
 	if !tools.VerifyMobile(mobile) {
@@ -108,5 +122,30 @@ func NewNotifySmsTencent(sdkAppId, secretId, secretKey string, phones []string) 
 		SecretId:  secretId,
 		SecretKey: secretKey,
 		Phones:    phones,
+	}, nil
+}
+
+func NewVerifySmsYmrt(appID, secretKey, mobile, code string) (*VerifySmsYmrt, error) {
+	// 手机号验证
+	if !tools.VerifyMobile(mobile) {
+		return nil, errors.New("invalid phone num")
+	}
+	return &VerifySmsYmrt{
+		AppID:     appID,
+		SecretKey: secretKey,
+		Mobile:    mobile,
+		Code:      code,
+	}, nil
+}
+
+func NewNotifySmsYmrt(appID, secretKey, mobile string) (*NotifySmsYmrt, error) {
+	// 手机号验证
+	if !tools.VerifyMobile(mobile) {
+		return nil, errors.New("invalid phone num")
+	}
+	return &NotifySmsYmrt{
+		AppID:     appID,
+		SecretKey: secretKey,
+		Mobile:    mobile,
 	}, nil
 }
