@@ -102,3 +102,33 @@ func TestSmsModifyPwdCephalon(t *testing.T) {
 		t.Fatalf("send register cephalon sms failed, err: %v", err)
 	}
 }
+
+func TestInterfaceSmsLoginCephalon(t *testing.T) {
+	mobile := "13187098660"
+	code := "222222"
+
+	var (
+		smsCli sms.Verify
+		err    error
+	)
+
+	smsCli, err = sms.NewVerifySms("your_apikey", mobile, code)
+	if err != nil {
+		t.Logf("init verify sms failed, err: %v", err)
+		return
+	}
+	// 发送模板内容
+	if err = smsCli.SendSmsLoginCephalon(); err != nil {
+		t.Fatalf("send register cephalon sms failed, err: %v", err)
+	}
+
+	smsCli, err = sms.NewVerifySmsYmrt("your_app_id", "your_secret_key", mobile, code)
+	if err != nil {
+		t.Logf("init verify sms failed, err: %v", err)
+		return
+	}
+	// 发送模板内容
+	if err = smsCli.SendSmsLoginCephalon(); err != nil {
+		t.Fatalf("send register cephalon sms failed, err: %v", err)
+	}
+}
