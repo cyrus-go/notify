@@ -60,10 +60,11 @@ func SendMailServiceAli(user, password, host, subject, date, body, mailType, rep
 		contentType = "Content-Type: text/plain" + "; charset=UTF-8"
 	}
 
+	from := mime.QEncoding.Encode("UTF-8", "Cephalon") + " <" + user + ">"
 	ccAddress := strings.Join(cc, ";")
 	bccAddress := strings.Join(bcc, ";")
 	toAddress := strings.Join(to, ";")
-	msg := []byte("To: " + toAddress + "\r\nFrom: " + user + "\r\nSubject: " + subject + "\r\nDate: " + date + "\r\nReply-To: " + replyToAddress + "\r\nCc: " + ccAddress + "\r\nBcc: " + bccAddress + "\r\n" + contentType + "\r\n\r\n" + body)
+	msg := []byte("To: " + toAddress + "\r\nFrom: " + from + "\r\nSubject: " + subject + "\r\nDate: " + date + "\r\nReply-To: " + replyToAddress + "\r\nCc: " + ccAddress + "\r\nBcc: " + bccAddress + "\r\n" + contentType + "\r\n\r\n" + body)
 	sendTo := MergeSlice(to, cc)
 	sendTo = MergeSlice(sendTo, bcc)
 	return smtp.SendMail(host, auth, user, sendTo, msg)
