@@ -6,12 +6,15 @@ import (
 	"log"
 	"mime"
 	"net/smtp"
+	"strconv"
 	"strings"
 )
 
 const (
-	EmailAliHost = "smtp.mxhichina.com"
-	EmailAliPort = 465
+	EmailAliHost     = "smtp.mxhichina.com"
+	EmailAliPort     = 465
+	EmailTencentHost = "gz-smtp.qcloudmail.com"
+	EmailTencentPort = 465
 )
 
 /*
@@ -75,4 +78,97 @@ func MergeSlice(s1 []string, s2 []string) []string {
 	copy(slice, s1)
 	copy(slice[len(s1):], s2)
 	return slice
+}
+
+// SendMailTencent 用腾讯邮箱发送邮件(mailFrom: 发件人, mailTo: 收件人, title: 标题, content: 内容)
+func SendMailTencent(username, password, mailFrom, mailTo, sendName, title, content string) error {
+	// 初始化
+	var conn = &gomail.Dialer{}
+	// 创建一个message
+	m := gomail.NewMessage()
+
+	conn = gomail.NewDialer(EmailTencentHost, EmailTencentPort, username, password)
+	// 添加发件人信息
+	m.SetHeader("From", mime.QEncoding.Encode("UTF-8", sendName)+"<"+mailFrom+">")
+
+	// 构建邮件信息
+	m.SetHeader("To", mailTo)
+	m.SetHeader("Subject", title)
+	m.SetBody("text/html", content)
+
+	// 发送
+	if err := conn.DialAndSend(m); err != nil {
+		return errors.Errorf("To: %s ## Send Email Failed! Err: %v", mailTo, err)
+	}
+
+	log.Println("To:", mailTo, "##", "Send Email Successfully!")
+	return nil
+}
+
+// SendMailServiceTencent 发送邮件服务
+// user: 用户名, password: 密码, host: 邮箱服务器地址, subject: 主题, date: 发送时间, body: 内容, mailType: html or text, replyToAddress: 回复地址, to: 收件人, cc: 抄送人, bcc: 密送人
+func SendMailServiceTencent(user, password, host, subject, date, body, mailType, replyToAddress string, to, cc, bcc []string) error {
+	// 创建新的邮件消息
+	m := gomail.NewMessage()
+
+	// 设置发件人
+	m.SetHeader("From", m.FormatAddress(user, "Cephalon"))
+
+	// 设置收件人
+	if len(to) > 0 {
+		m.SetHeader("To", to...)
+	}
+
+	// 设置抄送
+	if len(cc) > 0 {
+		m.SetHeader("Cc", cc...)
+	}
+
+	// 设置密送
+	if len(bcc) > 0 {
+		m.SetHeader("Bcc", bcc...)
+	}
+
+	// 设置回复地址
+	if replyToAddress != "" {
+		m.SetHeader("Reply-To", replyToAddress)
+	}
+
+	// 设置主题
+	m.SetHeader("Subject", subject)
+
+	// 设置日期
+	if date != "" {
+		m.SetHeader("Date", date)
+	}
+
+	// 设置邮件正文类型
+	if mailType == "html" {
+		m.SetBody("text/html", body)
+	} else {
+		m.SetBody("text/plain", body)
+	}
+
+	// 解析主机和端口
+	hp := strings.Split(host, ":")
+	hostname := hp[0]
+	port := 25 // 默认SMTP端口
+
+	if len(hp) > 1 {
+		port, _ = strconv.Atoi(hp[1])
+	} else {
+		// 如果没有指定端口，根据常见情况设置默认端口
+		// 注意：gomail 不会自动尝试 SSL/TLS，需要明确指定
+		port = 587 // 使用更常见的提交端口
+	}
+
+	// 创建拨号器
+	d := gomail.NewDialer(hostname, port, user, password)
+
+	// 尝试发送邮件
+	if err := d.DialAndSend(m); err != nil {
+		return err
+	}
+
+	return nil
 }
