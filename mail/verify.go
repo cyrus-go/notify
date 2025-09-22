@@ -79,6 +79,20 @@ func NewVerifyServiceMail(username, password, to, date, code string) *VerifyServ
 	}
 }
 
+func NewVerifyServiceMailTencent(username, password, to, date, code string) *VerifyServiceMail {
+	return &VerifyServiceMail{
+		Username: username,
+		Password: password,
+		To:       to,
+		Date:     date,
+		Code:     code,
+		Host:     "gz-smtp.qcloudmail.com:465", // 阿里云固定 host
+		//Cc:             cc,  // 抄送
+		//Bcc:            bcc, // 密送
+		//ReplyToAddress: replyToAddress,
+		//MailType: mailType,
+	}
+}
 func (v *VerifyMail) SendMailCephalonCloudRegisterTencent() error {
 	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudRegister, fmt.Sprintf(contextCephalonCloudRegister, v.Code))
 }
