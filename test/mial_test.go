@@ -39,9 +39,9 @@ func TestMailWarningBalance(t *testing.T) {
 	//password := "your_pwd"
 	//sendMail := "your@mail.com"
 	//receiveMail := "receive@mail.com"
-	username := "youruser"
-	password := "yourpasswd"
-	to := "touser"
+	username := "service@cephalon.tech"
+	password := "tWrlNuH5@123"
+	to := "hyk130406@icloud.com"
 	date := fmt.Sprintf("%s", time.Now().Format(time.RFC1123Z))
 	notifyMail := mail.NewNotifyServiceMail(username, password, to, date)
 	if err := notifyMail.SendEmailWarningBalance(); err != nil {
@@ -50,10 +50,10 @@ func TestMailWarningBalance(t *testing.T) {
 }
 
 func TestMailWarningAppExpired(t *testing.T) {
-	username := "your@mail.com"
-	password := "your_pwd"
-	sendMail := "your@mail.com"
-	receiveMail := "receive@mail.com"
+	username := "service@cephalon.tech"
+	password := "tWrlNuH5@123"
+	sendMail := "service@cephalon.tech"
+	receiveMail := "hyk130406@icloud.com"
 	notifyMail := mail.NewNotifyMail(username, password, sendMail, receiveMail)
 	if err := notifyMail.SendEmailWarningAppExpired(); err != nil {
 		t.Fatalf("send app expired warning mail failed, err: %v", err)

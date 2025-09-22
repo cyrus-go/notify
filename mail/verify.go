@@ -81,70 +81,70 @@ func NewVerifyServiceMail(username, password, to, date, code string) *VerifyServ
 
 // SendMailCephalonCloudRegister Cephalon Cloud 注册
 func (v *VerifyMail) SendMailCephalonCloudRegister() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudRegister, fmt.Sprintf(contextCephalonCloudRegister, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudRegister, fmt.Sprintf(contextCephalonCloudRegister, v.Code))
 }
 
 // SendMailCephalonCloudLogin Cephalon Cloud 登录
 func (v *VerifyMail) SendMailCephalonCloudLogin() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudLogin, fmt.Sprintf(contextCephalonCloudLogin, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudLogin, fmt.Sprintf(contextCephalonCloudLogin, v.Code))
 }
 
 // SendMailCephalonCloudModifyPwd Cephalon Cloud 修改密码
 func (v *VerifyMail) SendMailCephalonCloudModifyPwd() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudModifyPwd, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudModifyPwd, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code))
 }
 
 // SendMailCephalonCloudBindWechat Cephalon Cloud 绑定微信
 func (v *VerifyMail) SendMailCephalonCloudBindWechat() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudBindWechat, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudBindWechat, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code))
 }
 
 // SendMailCephalonCoreRegister Cephalon Core 注册
 func (v *VerifyMail) SendMailCephalonCoreRegister() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreRegister, fmt.Sprintf(contextCephalonCoreRegister, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreRegister, fmt.Sprintf(contextCephalonCoreRegister, v.Code))
 }
 
 // SendMailCephalonCoreLogin Cephalon Core 登录
 func (v *VerifyMail) SendMailCephalonCoreLogin() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreLogin, fmt.Sprintf(contextCephalonCoreLogin, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreLogin, fmt.Sprintf(contextCephalonCoreLogin, v.Code))
 }
 
 // SendMailCephalonCoreModifyPwd Cephalon Core 修改密码
 func (v *VerifyMail) SendMailCephalonCoreModifyPwd() error {
-	return SendMailAli(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreModifyPwd, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code))
+	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreModifyPwd, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code))
 }
 
 // SendMailCephalonCloudRegister Cephalon Cloud 注册
 func (v *VerifyServiceMail) SendMailCephalonCloudRegister() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCloudRegister, v.Date, fmt.Sprintf(contextCephalonCloudRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCloudRegister, v.Date, fmt.Sprintf(contextCephalonCloudRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCloudLogin Cephalon Cloud 登录
 func (v *VerifyServiceMail) SendMailCephalonCloudLogin() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCloudLogin, v.Date, fmt.Sprintf(contextCephalonCloudLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCloudLogin, v.Date, fmt.Sprintf(contextCephalonCloudLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCloudModifyPwd Cephalon Cloud 修改密码
 func (v *VerifyServiceMail) SendMailCephalonCloudModifyPwd() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCloudModifyPwd, v.Date, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCloudModifyPwd, v.Date, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCloudBindWechat Cephalon Cloud 绑定微信
 func (v *VerifyServiceMail) SendMailCephalonCloudBindWechat() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCloudBindWechat, v.Date, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCloudBindWechat, v.Date, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCoreRegister Cephalon Core 注册
 func (v *VerifyServiceMail) SendMailCephalonCoreRegister() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCoreRegister, v.Date, fmt.Sprintf(contextCephalonCoreRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCoreRegister, v.Date, fmt.Sprintf(contextCephalonCoreRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCoreLogin Cephalon Core 登录
 func (v *VerifyServiceMail) SendMailCephalonCoreLogin() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCoreLogin, v.Date, fmt.Sprintf(contextCephalonCoreLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCoreLogin, v.Date, fmt.Sprintf(contextCephalonCoreLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendMailCephalonCoreModifyPwd Cephalon Core 修改密码
 func (v *VerifyServiceMail) SendMailCephalonCoreModifyPwd() error {
-	return SendMailServiceAli(v.Username, v.Password, v.Host, titleCephalonCoreModifyPwd, v.Date, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceTencent(v.Username, v.Password, v.Host, titleCephalonCoreModifyPwd, v.Date, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmail}, []string{})
 }

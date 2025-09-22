@@ -4,5 +4,5 @@ const (
 	SendNameCephalon     = "端脑云"
 	SendNameCephalonCore = "端脑小程序"
 
-	CcEmail = "service@cephalon.ai"
+	CcEmail = "service@cephalon.tech"
 )

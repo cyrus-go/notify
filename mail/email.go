@@ -1,6 +1,7 @@
 package mail
 
 import (
+	"fmt"
 	"github.com/pkg/errors"
 	"gopkg.in/gomail.v2"
 	"log"
@@ -8,6 +9,7 @@ import (
 	"net/smtp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const (
@@ -88,14 +90,16 @@ func SendMailTencent(username, password, mailFrom, mailTo, sendName, title, cont
 	m := gomail.NewMessage()
 
 	conn = gomail.NewDialer(EmailTencentHost, EmailTencentPort, username, password)
+	conn.SSL = true
+	date := fmt.Sprintf("%s", time.Now().Format(time.RFC1123Z))
 	// 添加发件人信息
-	m.SetHeader("From", mime.QEncoding.Encode("UTF-8", sendName)+"<"+mailFrom+">")
+	m.SetHeader("From", m.FormatAddress(username, "Cephalon"))
 
 	// 构建邮件信息
 	m.SetHeader("To", mailTo)
 	m.SetHeader("Subject", title)
 	m.SetBody("text/html", content)
-
+	m.SetHeader("Date", date)
 	// 发送
 	if err := conn.DialAndSend(m); err != nil {
 		return errors.Errorf("To: %s ## Send Email Failed! Err: %v", mailTo, err)
@@ -152,19 +156,19 @@ func SendMailServiceTencent(user, password, host, subject, date, body, mailType,
 	// 解析主机和端口
 	hp := strings.Split(host, ":")
 	hostname := hp[0]
-	port := 25 // 默认SMTP端口
+	port := 465 // 默认SMTP端口
 
 	if len(hp) > 1 {
 		port, _ = strconv.Atoi(hp[1])
 	} else {
 		// 如果没有指定端口，根据常见情况设置默认端口
 		// 注意：gomail 不会自动尝试 SSL/TLS，需要明确指定
-		port = 587 // 使用更常见的提交端口
+		port = 465 // 使用更常见的提交端口
 	}
 
 	// 创建拨号器
 	d := gomail.NewDialer(hostname, port, user, password)
-
+	d.SSL = true
 	// 尝试发送邮件
 	if err := d.DialAndSend(m); err != nil {
 		return err
