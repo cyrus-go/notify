@@ -46,6 +46,19 @@ func NewNotifyServiceMail(username, password, to, date string) *NotifyServiceMai
 		Password: password,
 		To:       to,
 		Date:     date,
+		Host:     "smtpdm.aliyun.com:80", // 阿里云固定 host
+		//Cc:             cc,  // 抄送
+		//Bcc:            bcc, // 密送
+		//ReplyToAddress: replyToAddress,
+		//MailType: mailType,
+	}
+}
+func NewNotifyServiceMailTencent(username, password, to, date string) *NotifyServiceMail {
+	return &NotifyServiceMail{
+		Username: username,
+		Password: password,
+		To:       to,
+		Date:     date,
 		Host:     "gz-smtp.qcloudmail.com:465", // 阿里云固定 host
 		//Cc:             cc,  // 抄送
 		//Bcc:            bcc, // 密送
@@ -53,29 +66,54 @@ func NewNotifyServiceMail(username, password, to, date string) *NotifyServiceMai
 		//MailType: mailType,
 	}
 }
-
 func (n *NotifyMail) SendEmailWarningBalance() error {
-	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyBalanceWarning, contextNotifyBalanceWarning)
+	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyBalanceWarning, contextNotifyBalanceWarning)
 }
 
 func (n *NotifyMail) SendEmailWarningAppExpired() error {
-	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyAppExpiredWarning, contextNotifyAppExpiredWarning)
+	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyAppExpiredWarning, contextNotifyAppExpiredWarning)
 }
 
 // SendEmailCustom 发送自定义邮件
 func (n *NotifyMail) SendEmailCustom(sendName, title, content string) error {
-	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, sendName, title, content)
+	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, sendName, title, content)
 }
 
 func (n *NotifyServiceMail) SendEmailWarningBalance() error {
-	return SendMailServiceTencent(n.Username, n.Password, n.Host, titleNotifyBalanceWarning, n.Date, contextNotifyBalanceWarning, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceAli(n.Username, n.Password, n.Host, titleNotifyBalanceWarning, n.Date, contextNotifyBalanceWarning, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
 }
 
 func (n *NotifyServiceMail) SendEmailWarningAppExpired() error {
-	return SendMailServiceTencent(n.Username, n.Password, n.Host, titleNotifyAppExpiredWarning, n.Date, contextNotifyAppExpiredWarning, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceAli(n.Username, n.Password, n.Host, titleNotifyAppExpiredWarning, n.Date, contextNotifyAppExpiredWarning, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
 }
 
 // SendEmailCustom 发送自定义邮件
 func (n *NotifyServiceMail) SendEmailCustom(title, content string) error {
-	return SendMailServiceTencent(n.Username, n.Password, n.Host, title, n.Date, content, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
+	return SendMailServiceAli(n.Username, n.Password, n.Host, title, n.Date, content, "text", "", []string{n.To}, []string{types.CcEmail}, []string{})
+}
+
+func (n *NotifyMail) SendEmailWarningBalanceTencent() error {
+	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyBalanceWarning, contextNotifyBalanceWarning)
+}
+
+func (n *NotifyMail) SendEmailWarningAppExpiredTencent() error {
+	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyAppExpiredWarning, contextNotifyAppExpiredWarning)
+}
+
+// SendEmailCustom 发送自定义邮件
+func (n *NotifyMail) SendEmailCustomTencent(sendName, title, content string) error {
+	return SendMailTencent(n.Username, n.Password, n.SendMail, n.ReceiveMail, sendName, title, content)
+}
+
+func (n *NotifyServiceMail) SendEmailWarningBalanceTencent() error {
+	return SendMailServiceTencent(n.Username, n.Password, n.Host, titleNotifyBalanceWarning, n.Date, contextNotifyBalanceWarning, "text", "", []string{n.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (n *NotifyServiceMail) SendEmailWarningAppExpiredTencent() error {
+	return SendMailServiceTencent(n.Username, n.Password, n.Host, titleNotifyAppExpiredWarning, n.Date, contextNotifyAppExpiredWarning, "text", "", []string{n.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+// SendEmailCustom 发送自定义邮件
+func (n *NotifyServiceMail) SendEmailCustomTencent(title, content string) error {
+	return SendMailServiceTencent(n.Username, n.Password, n.Host, title, n.Date, content, "text", "", []string{n.To}, []string{types.CcEmailTencent}, []string{})
 }
