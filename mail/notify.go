@@ -66,6 +66,19 @@ func NewNotifyServiceMailTencent(username, password, to, date string) *NotifySer
 		//MailType: mailType,
 	}
 }
+func NewNotifyServiceMailSelf(username, password, to, date string) *NotifyServiceMail {
+	return &NotifyServiceMail{
+		Username: username,
+		Password: password,
+		To:       to,
+		Date:     date,
+		Host:     "mail.zk-agent.ai:587", // 阿里云固定 host
+		//Cc:             cc,  // 抄送
+		//Bcc:            bcc, // 密送
+		//ReplyToAddress: replyToAddress,
+		//MailType: mailType,
+	}
+}
 func (n *NotifyMail) SendEmailWarningBalance() error {
 	return SendMailAli(n.Username, n.Password, n.SendMail, n.ReceiveMail, types.SendNameCephalon, titleNotifyBalanceWarning, contextNotifyBalanceWarning)
 }
@@ -116,4 +129,8 @@ func (n *NotifyServiceMail) SendEmailWarningAppExpiredTencent() error {
 // SendEmailCustom 发送自定义邮件
 func (n *NotifyServiceMail) SendEmailCustomTencent(title, content string) error {
 	return SendMailServiceTencent(n.Username, n.Password, n.Host, title, n.Date, content, "text", "", []string{n.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (n *NotifyServiceMail) SendEmailCustomSelf(title, content string) error {
+	return SendMailServiceSelf(n.Username, n.Password, n.Host, title, n.Date, content, "text", "", []string{n.To}, []string{types.CcSelfMail}, []string{})
 }

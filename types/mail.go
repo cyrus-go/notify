@@ -6,4 +6,5 @@ const (
 
 	CcEmail        = "service@cephalon.ai"
 	CcEmailTencent = "service@cephalon.tech"
+	CcSelfMail     = "service@cephalon.vip"
 )

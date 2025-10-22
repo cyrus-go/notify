@@ -17,6 +17,8 @@ const (
 	EmailAliPort     = 465
 	EmailTencentHost = "gz-smtp.qcloudmail.com"
 	EmailTencentPort = 465
+	EmailSelfHost    = "mail.zk-agent.ai"
+	EmailSelfPort    = 587
 )
 
 /*
@@ -174,5 +176,56 @@ func SendMailServiceTencent(user, password, host, subject, date, body, mailType,
 		return err
 	}
 
+	return nil
+}
+func SendMailServiceSelf(user, password, host, subject, date, body, mailType, replyToAddress string, to, cc, bcc []string) error {
+	hp := strings.Split(host, ":")
+	auth := smtp.PlainAuth("", user, password, hp[0])
+	var contentType string
+	if mailType == "html" {
+		contentType = "Content-Type: text/" + mailType + "; charset=UTF-8"
+	} else {
+		contentType = "Content-Type: text/plain" + "; charset=UTF-8"
+	}
+
+	from := mime.QEncoding.Encode("UTF-8", "Cephalon") + " <" + user + ">"
+	ccAddress := strings.Join(cc, ";")
+	bccAddress := strings.Join(bcc, ";")
+	toAddress := strings.Join(to, ";")
+	msg := []byte("To: " + toAddress + "\r\nFrom: " + from + "\r\nSubject: " + subject + "\r\nDate: " + date + "\r\nReply-To: " + replyToAddress + "\r\nCc: " + ccAddress + "\r\nBcc: " + bccAddress + "\r\n" + contentType + "\r\n\r\n" + body)
+	sendTo := mergeSlice(to, cc)
+	sendTo = mergeSlice(sendTo, bcc)
+	return smtp.SendMail(host, auth, user, sendTo, msg)
+}
+
+func mergeSlice(s1 []string, s2 []string) []string {
+	slice := make([]string, len(s1)+len(s2))
+	copy(slice, s1)
+	copy(slice[len(s1):], s2)
+	return slice
+}
+func SendMailSelf(username, password, mailFrom, mailTo, sendName, title, content string) error {
+	// 初始化
+	var conn = &gomail.Dialer{}
+	// 创建一个message
+	m := gomail.NewMessage()
+
+	conn = gomail.NewDialer(EmailSelfHost, EmailSelfPort, username, password)
+	conn.SSL = true
+	date := fmt.Sprintf("%s", time.Now().Format(time.RFC1123Z))
+	// 添加发件人信息
+	m.SetHeader("From", m.FormatAddress(username, "Cephalon"))
+
+	// 构建邮件信息
+	m.SetHeader("To", mailTo)
+	m.SetHeader("Subject", title)
+	m.SetBody("text/html", content)
+	m.SetHeader("Date", date)
+	// 发送
+	if err := conn.DialAndSend(m); err != nil {
+		return errors.Errorf("To: %s ## Send Email Failed! Err: %v", mailTo, err)
+	}
+
+	log.Println("To:", mailTo, "##", "Send Email Successfully!")
 	return nil
 }

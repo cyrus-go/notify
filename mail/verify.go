@@ -93,6 +93,76 @@ func NewVerifyServiceMailTencent(username, password, to, date, code string) *Ver
 		//MailType: mailType,
 	}
 }
+func NewVerifyServiceMailSelf(username, password, to, date, code string) *VerifyServiceMail {
+	return &VerifyServiceMail{
+		Username: username,
+		Password: password,
+		To:       to,
+		Date:     date,
+		Code:     code,
+		Host:     "mail.zk-agent.ai:587", // 阿里云固定 host
+		//Cc:             cc,  // 抄送
+		//Bcc:            bcc, // 密送
+		//ReplyToAddress: replyToAddress,
+		//MailType: mailType,
+	}
+}
+func (v *VerifyMail) SendMailCephalonCloudRegisterSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudRegister, fmt.Sprintf(contextCephalonCloudRegister, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCloudLoginSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudLogin, fmt.Sprintf(contextCephalonCloudLogin, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCloudModifyPwdSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudModifyPwd, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCloudBindWechatSelf() error {
+
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudBindWechat, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCoreRegisterSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreRegister, fmt.Sprintf(contextCephalonCoreRegister, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCoreLoginSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreLogin, fmt.Sprintf(contextCephalonCoreLogin, v.Code))
+}
+
+func (v *VerifyMail) SendMailCephalonCoreModifyPwdSelf() error {
+	return SendMailSelf(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalonCore, titleCephalonCoreModifyPwd, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code))
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCloudRegisterSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCloudRegister, v.Date, fmt.Sprintf(contextCephalonCloudRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCloudLoginSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCloudLogin, v.Date, fmt.Sprintf(contextCephalonCloudLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCloudModifyPwdSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCloudModifyPwd, v.Date, fmt.Sprintf(contextCephalonCloudModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCloudBindWechatSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCloudBindWechat, v.Date, fmt.Sprintf(contextCephalonCloudBindWechat, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCoreRegisterSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCoreRegister, v.Date, fmt.Sprintf(contextCephalonCoreRegister, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCoreLoginSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCoreLogin, v.Date, fmt.Sprintf(contextCephalonCoreLogin, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
+
+func (v *VerifyServiceMail) SendMailCephalonCoreModifyPwdSelf() error {
+	return SendMailServiceSelf(v.Username, v.Password, v.Host, titleCephalonCoreModifyPwd, v.Date, fmt.Sprintf(contextCephalonCoreModifyPwd, v.Code), "text", "", []string{v.To}, []string{types.CcEmailTencent}, []string{})
+}
 func (v *VerifyMail) SendMailCephalonCloudRegisterTencent() error {
 	return SendMailTencent(v.Username, v.Password, v.SendMail, v.ReceiveMail, types.SendNameCephalon, titleCephalonCloudRegister, fmt.Sprintf(contextCephalonCloudRegister, v.Code))
 }

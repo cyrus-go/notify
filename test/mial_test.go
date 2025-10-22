@@ -59,3 +59,13 @@ func TestMailWarningAppExpired(t *testing.T) {
 		t.Fatalf("send app expired warning mail failed, err: %v", err)
 	}
 }
+
+func TestMailSendSelfMail(t *testing.T) {
+	username := "service@cephalon.vip"
+	password := "qcLsV2VAXn_MP5Z"
+	receiveMail := "1169792186@qq.com"
+	notifyMail := mail.NewNotifyServiceMailSelf(username, password, receiveMail, fmt.Sprintf("%s", time.Now().Format(time.RFC1123Z)))
+	if err := notifyMail.SendEmailCustomSelf("nihao", "123123"); err != nil {
+		t.Fatalf("send self mail failed, err: %v", err)
+	}
+}
