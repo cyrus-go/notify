@@ -19,18 +19,18 @@ const (
 	titleCephalonCoreLogin     = "端脑小程序登录验证"
 	titleCephalonCoreModifyPwd = "端脑小程序修改密码验证"
 
-	//contextCephalonCloudRegister   = "【端脑科技】欢迎注册 Cephalon Cloud，本次注册的验证码为 %s，5分钟内有效"
-	//contextCephalonCloudLogin      = "【端脑科技】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %s，5分钟内有效"
-	//contextCephalonCloudModifyPwd  = "【端脑科技】您正在修改 Cephalon Cloud 密码，本次验证码为 %s，5分钟内有效"
-	//contextCephalonCloudBindWechat = "【端脑科技】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %s，5分钟内有效"
+	//contextCephalonCloudRegister   = "【端脑云】欢迎注册 Cephalon Cloud，本次注册的验证码为 %s，5分钟内有效"
+	//contextCephalonCloudLogin      = "【端脑云】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %s，5分钟内有效"
+	//contextCephalonCloudModifyPwd  = "【端脑云】您正在修改 Cephalon Cloud 密码，本次验证码为 %s，5分钟内有效"
+	//contextCephalonCloudBindWechat = "【端脑云】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %s，5分钟内有效"
 	contextCephalonCloudRegister   = "【Cephalon AI】Welcome to Cephalon AI registration! Your verification code is %s, valid for 5 minutes."
 	contextCephalonCloudLogin      = "【Cephalon AI】Welcome to Cephalon AI! Your login verification code is %s, valid for 5 minutes."
 	contextCephalonCloudModifyPwd  = "【Cephalon AI】You are changing your Cephalon AI password. Your verification code is %s, valid for 5 minutes."
 	contextCephalonCloudBindWechat = "【Cephalon AI】You are binding Cephalon AI with WeChat. Your verification code is %s, valid for 5 minutes."
 
-	contextCephalonCoreRegister  = "【端脑科技】欢迎注册 Cephalon Core，本次注册的验证码为 %s，5分钟内有效"
-	contextCephalonCoreLogin     = "【端脑科技】欢迎登陆 Cephalon Core，本次登陆的验证码为 %s，5分钟内有效"
-	contextCephalonCoreModifyPwd = "【端脑科技】您正在修改 Cephalon Core 平台密码，本次验证码为 %s，5分钟内有效"
+	contextCephalonCoreRegister  = "【端脑云】欢迎注册 Cephalon Core，本次注册的验证码为 %s，5分钟内有效"
+	contextCephalonCoreLogin     = "【端脑云】欢迎登陆 Cephalon Core，本次登陆的验证码为 %s，5分钟内有效"
+	contextCephalonCoreModifyPwd = "【端脑云】您正在修改 Cephalon Core 平台密码，本次验证码为 %s，5分钟内有效"
 )
 
 type VerifyMail struct {

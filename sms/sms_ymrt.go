@@ -5,14 +5,14 @@ import (
 )
 
 const (
-	contentCephalonCloudRegister   = "【端脑科技】欢迎注册 Cephalon Cloud，本次注册的验证码为 %s，5分钟内有效"
-	contentCephalonCloudLogin      = "【端脑科技】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %s，5分钟内有效"
-	contentCephalonCloudModifyPwd  = "【端脑科技】您正在修改 Cephalon Cloud 密码，本次验证码为 %s，5分钟内有效"
-	contentCephalonCloudBindWechat = "【端脑科技】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %s，5分钟内有效"
+	contentCephalonCloudRegister   = "【端脑云】欢迎注册 Cephalon Cloud，本次注册的验证码为 %s，5分钟内有效"
+	contentCephalonCloudLogin      = "【端脑云】欢迎登陆 Cephalon Cloud，本次登陆的验证码为 %s，5分钟内有效"
+	contentCephalonCloudModifyPwd  = "【端脑云】您正在修改 Cephalon Cloud 密码，本次验证码为 %s，5分钟内有效"
+	contentCephalonCloudBindWechat = "【端脑云】您正在使用微信绑定 Cephalon Cloud，本次验证码为 %s，5分钟内有效"
 
-	contentCephalonCoreRegister  = "【端脑科技】欢迎注册 Cephalon Core，本次注册的验证码为 %s，5分钟内有效"
-	contentCephalonCoreLogin     = "【端脑科技】欢迎登陆 Cephalon Core，本次登陆的验证码为 %s，5分钟内有效"
-	contentCephalonCoreModifyPwd = "【端脑科技】您正在修改 Cephalon Core 平台密码，本次验证码为 %s，5分钟内有效"
+	contentCephalonCoreRegister  = "【端脑云】欢迎注册 Cephalon Core，本次注册的验证码为 %s，5分钟内有效"
+	contentCephalonCoreLogin     = "【端脑云】欢迎登陆 Cephalon Core，本次登陆的验证码为 %s，5分钟内有效"
+	contentCephalonCoreModifyPwd = "【端脑云】您正在修改 Cephalon Core 平台密码，本次验证码为 %s，5分钟内有效"
 )
 
 // SendSmsRegisterCephalon Cephalon 注册短信验证
