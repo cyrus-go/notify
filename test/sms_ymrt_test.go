@@ -19,7 +19,7 @@ func TestSmsYmrtRegisterCephalon(t *testing.T) {
 		return
 	}
 	// 发送模板内容
-	if err = smsCli.SendSmsRegisterCephalon(); err != nil {
+	if _, err = smsCli.SendSmsRegisterCephalon(); err != nil {
 		t.Fatalf("send register cephalon sms failed, err: %v", err)
 	}
 }
@@ -33,7 +33,7 @@ func TestSmsYmrtLoginCephalon(t *testing.T) {
 		return
 	}
 	// 发送模板内容
-	if err = smsCli.SendSmsLoginCephalon(); err != nil {
+	if _, err = smsCli.SendSmsLoginCephalon(); err != nil {
 		t.Fatalf("send register cephalon sms failed, err: %v", err)
 	}
 }
@@ -47,7 +47,7 @@ func TestSmsYmrtModifyPwdCephalon(t *testing.T) {
 		return
 	}
 	// 发送模板内容
-	if err = smsCli.SendSmsModifyPwdCephalon(); err != nil {
+	if _, err = smsCli.SendSmsModifyPwdCephalon(); err != nil {
 		t.Fatalf("send register cephalon sms failed, err: %v", err)
 	}
 }
@@ -61,7 +61,7 @@ func TestSmsYmrtNotify(t *testing.T) {
 		return
 	}
 	// 发送模板内容
-	if err = smsCli.SendSmsCustom(content); err != nil {
+	if _, err = smsCli.SendSmsCustom(content); err != nil {
 		t.Fatalf("send notify cephalon sms failed, err: %v", err)
 	}
 }
@@ -75,7 +75,7 @@ func TestSmsYmrtCustom(t *testing.T) {
 		return
 	}
 	// 发送模板内容
-	if err = smsCli.SendSmsCustom(content); err != nil {
+	if _, err = smsCli.SendSmsCustom(content); err != nil {
 		t.Fatalf("send notify cephalon sms failed, err: %v", err)
 	}
 }

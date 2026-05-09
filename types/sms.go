@@ -13,6 +13,12 @@ type YPSendSmsResp struct {
 
 // YmrtSendSmsResp 亿美软通发送短信返回
 type YmrtSendSmsResp struct {
-	Code string      `json:"code"`
-	Data interface{} `json:"data"`
+	Code string                `json:"code"`
+	Data []YmrtSendSmsRespData `json:"data"`
+}
+
+type YmrtSendSmsRespData struct {
+	Mobile      string `json:"mobile"`
+	SmsID       string `json:"smsId"`
+	CustomSmsID string `json:"customSmsId"`
 }

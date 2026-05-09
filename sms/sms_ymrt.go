@@ -16,40 +16,40 @@ const (
 )
 
 // SendSmsRegisterCephalon Cephalon 注册短信验证
-func (v *VerifySmsYmrt) SendSmsRegisterCephalon() (err error) {
+func (v *VerifySmsYmrt) SendSmsRegisterCephalon() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCloudRegister, v.Code))
 }
 
 // SendSmsLoginCephalon Cephalon 登录短信验证
-func (v *VerifySmsYmrt) SendSmsLoginCephalon() (err error) {
+func (v *VerifySmsYmrt) SendSmsLoginCephalon() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCloudLogin, v.Code))
 }
 
 // SendSmsModifyPwdCephalon Cephalon 修改密码短信验证
-func (v *VerifySmsYmrt) SendSmsModifyPwdCephalon() (err error) {
+func (v *VerifySmsYmrt) SendSmsModifyPwdCephalon() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCloudModifyPwd, v.Code))
 }
 
 // SendSmsBindWechatCephalon Cephalon 绑定微信短信验证
-func (v *VerifySmsYmrt) SendSmsBindWechatCephalon() (err error) {
+func (v *VerifySmsYmrt) SendSmsBindWechatCephalon() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCloudBindWechat, v.Code))
 }
 
 // SendSmsRegisterCephalonCore Cephalon core 注册短信验证
-func (v *VerifySmsYmrt) SendSmsRegisterCephalonCore() (err error) {
+func (v *VerifySmsYmrt) SendSmsRegisterCephalonCore() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCoreRegister, v.Code))
 }
 
 // SendSmsLoginCephalonCore Cephalon core 登录短信验证
-func (v *VerifySmsYmrt) SendSmsLoginCephalonCore() (err error) {
+func (v *VerifySmsYmrt) SendSmsLoginCephalonCore() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCoreLogin, v.Code))
 }
 
 // SendSmsModifyPwdCephalonCore Cephalon core 修改密码短信验证
-func (v *VerifySmsYmrt) SendSmsModifyPwdCephalonCore() (err error) {
+func (v *VerifySmsYmrt) SendSmsModifyPwdCephalonCore() (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, fmt.Sprintf(contentCephalonCoreModifyPwd, v.Code))
 }
 
-func (v *NotifySmsYmrt) SendSmsCustom(content string) (err error) {
+func (v *NotifySmsYmrt) SendSmsCustom(content string) (smsID string, err error) {
 	return SendSmsYmrt(v.AppID, v.SecretKey, v.Mobile, content)
 }
