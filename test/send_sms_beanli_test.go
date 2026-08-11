@@ -9,9 +9,9 @@ import (
 // TestSendSmsBeanliReal 通过滨礼网络真实发送一条 Cephalon Cloud 登录验证码短信。
 // 执行前需配置 BEANLI_SMS_ACCOUNT、BEANLI_SMS_PASSWORD 和 BEANLI_SMS_MOBILE。
 func TestSendSmsBeanliReal(t *testing.T) {
-	account := "922847"
-	password := "EgXyEu3g"
-	mobile := "13187098660"
+	account := ""
+	password := ""
+	mobile := ""
 	code := "123456"
 
 	smsClient, err := sms.NewVerifySmsBeanli(account, password, mobile, code)
